@@ -29,13 +29,14 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
-      <header className="App-header">
+      <nav></nav>
+      <div className="App-div">
         {this.state.player.map(player => {
           return(
             <Player player={player}/>
           )
         })}
-      </header>
+      </div>
     </div>
   );
   }
