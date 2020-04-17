@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import Player from './components/Player';
 
 class App extends React.Component {
   constructor() {
@@ -9,7 +10,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      player: []
+      player: [],
     }
   };
 
@@ -29,7 +30,11 @@ class App extends React.Component {
   return (
     <div className="App">
       <header className="App-header">
-       
+        {this.state.player.map(player => {
+          return(
+            <Player player={player}/>
+          )
+        })}
       </header>
     </div>
   );
