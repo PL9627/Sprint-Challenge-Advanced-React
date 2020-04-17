@@ -18,9 +18,12 @@ class App extends React.Component {
 
     axios.get('http://localhost:5000/api/players')
     .then(players => {
-      console.log('players:', players);
+      console.log('player:', players);
+
+      this.setState({player: players.data});
     })
-  }
+    .catch(err => console.log('componentDidMount Err', err));
+  };
 
   render() {
   return (
