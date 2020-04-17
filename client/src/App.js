@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import Player from './components/Player';
+import useDarkMode from './hooks/useDarkMode';
 
 class App extends React.Component {
   constructor() {
