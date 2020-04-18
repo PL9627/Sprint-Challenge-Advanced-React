@@ -1,46 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import axios from 'axios';
-import Player from './components/Player';
-import useDarkMode from './hooks/useDarkMode';
+import PlayerList from './components/PlayerList';
+import {useDarkMode} from './hooks/useDarkMode';
 
-class App extends React.Component {
-  constructor() {
-    console.log('constructor runs')
+function App() {
+  
 
-    super();
+  const [darkMode, setDarkMode] = useDarkMode(false);
+  const toggleDarkMode = e => {
+    e.preventDefault();
 
-    this.state = {
-      player: [],
-    }
-  };
+    setDarkMode(!darkMode);
+  }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-
-    axios.get('http://localhost:5000/api/players')
-    .then(players => {
-      console.log('player:', players);
-
-      this.setState({player: players.data});
-    })
-    .catch(err => console.log('componentDidMount Err', err));
-  };
-
-  render() {
   return (
     <div className="App">
-      <nav></nav>
+      <div className='dark-mode__toggle'>
+        <div onClick={toggleDarkMode} className={darkMode ? 'toggle toggled' : 'toggle'}></div>
+      </div>
       <div className="App-div">
-        {this.state.player.map(player => {
-          return(
-            <Player player={player}/>
-          )
-        })}
+        <PlayerList />
       </div>
     </div>
-  );
-  }
+    )
 }
 
 export default App;
