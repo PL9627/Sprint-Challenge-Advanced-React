@@ -28,7 +28,6 @@ class PlayerList extends React.Component {
       render() {
       return (
         <div className="App">
-          <nav></nav>
           <div className="App-div">
             {this.state.player.map(player => {
               return(
